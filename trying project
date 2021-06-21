@@ -46,18 +46,29 @@ public class Project21 {
 
        }
         else{
-              double sum=0.0;
+              
               System.out.print("Enter the name of file with price: ");
-             String filename;
-             String cardNumber;
+             String filename=keyboard.nextLine();
              
-             File file=new File(filename.txt);
+            
+             File file=new File(filename);
+             Scanner PrintWriter = new Scanner(filename); 
+        while (PrintWriter.hasNext()) {
+            System.out.println(PrintWriter.nextLine());
+
              if (!file.exists())
+                System.out.println("Reading " + file.getAbsolutePath());
+            PrintWriter=new Scanner(file); 
+            while (PrintWriter.hasNext()) {
+                System.out.println(PrintWriter.nextLine());
+            }
+            PrintWriter.close();
              {
                  System.out.println("you can not buy this item- we do not have it.");
                  System.exit(0);
              }
              Scanner inputFile=new Scanner(file);
+             double sum=0;
              while (inputFile.hasNext())
              {
                  double number =inputFile.nextDouble();
@@ -65,13 +76,16 @@ public class Project21 {
                  sum=sum+number;
              }
              inputFile.close();
+             String cardNumber;
              System.out.println("your total of the purchase is "+sum);
              System.out.println ("Tell me your card number for to pay for your choise.");
                  cardNumber=keyboard.nextLine();
              System.out.println ("We gonna get the " + sum+ "from your card "+cardNumber);
         }
              }
-        }  
+        } 
+}
+
       
 
         
